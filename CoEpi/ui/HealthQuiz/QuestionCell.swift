@@ -38,8 +38,8 @@ class QuestionCell: UITableViewCell {
 class CheckBox: UIButton {
     public var onChecked: ((Bool) -> ())?
 
+    // TOOD: do this properly
     let rect = CGRect(x: 0, y: 0, width: 20, height: 20)
-    // Images
     let checkedImage = UIImage(named: "checkbox_checked")
     let uncheckedImage = UIImage(named: "checkbox_unchecked")
 

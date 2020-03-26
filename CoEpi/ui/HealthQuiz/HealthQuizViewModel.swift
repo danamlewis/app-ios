@@ -30,7 +30,7 @@ class HealthQuizViewModel {
     }
 
     func handleAnswer(question: Question, checked: Bool) {
-        // inefficient, i know, can replace with a map
+        // TODO: represent as a map
         let index: Int? = questions.firstIndex { $0.id == question.id }
         guard let i = index else { return }
 
