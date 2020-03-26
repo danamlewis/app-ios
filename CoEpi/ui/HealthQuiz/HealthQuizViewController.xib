@@ -50,6 +50,24 @@
                         </attributedString>
                     </state>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4PF-Ti-SN6">
+                    <rect key="frame" x="272" y="740" width="94" height="47"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.050932146609999999" green="0.31037443879999999" blue="0.62152999639999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="SUBMIT">
+                        <attributedString key="attributedTitle">
+                            <fragment content="SUBMIT">
+                                <attributes>
+                                    <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <font key="NSFont" size="14" name="Helvetica-Bold"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                    </state>
+                    <connections>
+                        <action selector="submit:" destination="-1" eventType="touchUpInside" id="rBf-oq-UKh"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

@@ -9,9 +9,22 @@
 import UIKit
 
 class HealthQuizViewController: UIViewController {
-    
+    private let viewModel: HealthQuizViewModel
+
     @IBOutlet weak var questionList: UITableView!
-    private let viewModel: HealthQuizViewModel = .init()
+    
+    init(viewModel: HealthQuizViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: String(describing: Self.self), bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    @IBAction func submit(_ sender: UIButton) {
+        viewModel.onTapSubmit()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

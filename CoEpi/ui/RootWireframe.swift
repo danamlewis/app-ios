@@ -48,9 +48,18 @@ extension RootWireFrame : HomeViewModelDelegate {
     }
     
     private func showQuiz() {
-        let quizViewController = HealthQuizViewController.init(nibName: String(describing:HealthQuizViewController.self), bundle: nil
-        )
+        let viewModel: HealthQuizViewModel = try! container.resolve()
+        
+        let quizViewController = HealthQuizViewController(viewModel: viewModel)
+
         quizViewController.title = "My Health"
+        viewModel.delegate = self
         rootNavigationController.pushViewController(quizViewController, animated: true)
+    }
+}
+
+extension RootWireFrame : HealthQuizViewModelDelegate {
+    func onSubmit() {
+        rootNavigationController.popViewController(animated: true)
     }
 }
