@@ -6,7 +6,7 @@ class HealthQuizViewModel {
         Question(id: 2, text: "Tiredness", checked: false),
         Question(id: 3, text: "Dry cough", checked: false),
         Question(id: 4, text: "Muscle aches", checked: false),
-        Question(id: 5, text: "Nasal aongestion", checked: false),
+        Question(id: 5, text: "Nasal congestion", checked: false),
         Question(id: 6, text: "Runny nose", checked: false),
         Question(id: 7, text: "Sore throat", checked: false),
         Question(id: 8, text: "Diarrhea", checked: false),
