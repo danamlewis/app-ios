@@ -52,7 +52,6 @@ extension RootWireFrame : HomeViewModelDelegate {
         
         let quizViewController = HealthQuizViewController(viewModel: viewModel)
 
-        quizViewController.title = "My Health"
         viewModel.delegate = self
         rootNavigationController.pushViewController(quizViewController, animated: true)
     }

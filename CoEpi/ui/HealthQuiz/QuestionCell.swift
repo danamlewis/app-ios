@@ -1,11 +1,3 @@
-//
-//  QuestionCell.swift
-//  CoEpi
-//
-//  Created by Johnson Hsieh on 3/26/20.
-//  Copyright © 2020 org.coepi. All rights reserved.
-//
-
 import UIKit
 
 class QuestionCell: UITableViewCell {
@@ -17,9 +9,9 @@ class QuestionCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        checkBox.onChecked = { (checked: Bool) -> Void in
-            guard let q = self.question else { return }
-            self.onChecked?(q, checked)
+        checkBox.onChecked = { [weak self] (checked: Bool) -> Void in
+            guard let this = self, let q = this.question else { return }
+            this.onChecked?(q, checked)
         }
         accessoryView = checkBox
     }
@@ -46,8 +38,8 @@ class CheckBox: UIButton {
     init() {
         super.init(frame: rect)
 
-        self.addTarget(self, action:#selector(buttonClicked(sender:)), for: UIControl.Event.touchUpInside)
-        self.isChecked = false
+        addTarget(self, action:#selector(buttonClicked(sender:)), for: .touchUpInside)
+        isChecked = false
     }
 
     required init?(coder: NSCoder) {
@@ -56,18 +48,16 @@ class CheckBox: UIButton {
 
     var isChecked: Bool = false {
         didSet {
-            if isChecked == true {
-                self.setImage(checkedImage, for: UIControl.State.normal)
+            if isChecked {
+                setImage(checkedImage, for: .normal)
             } else {
-                self.setImage(uncheckedImage, for: UIControl.State.normal)
+                setImage(uncheckedImage, for: .normal)
             }
         }
     }
 
     @objc func buttonClicked(sender: UIButton) {
-        if sender == self {
-            isChecked = !isChecked
-            onChecked?(isChecked)
-        }
+        isChecked = !isChecked
+        onChecked?(isChecked)
     }
 }

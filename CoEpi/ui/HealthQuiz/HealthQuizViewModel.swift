@@ -1,11 +1,3 @@
-//
-//  HealthQuizViewModel.swift
-//  CoEpi
-//
-//  Created by Johnson Hsieh on 3/26/20.
-//  Copyright © 2020 org.coepi. All rights reserved.
-//
-
 class HealthQuizViewModel {
     weak var delegate: HealthQuizViewModelDelegate?
 
@@ -23,7 +15,7 @@ class HealthQuizViewModel {
         Question(id: 11, text: "None of the Above", checked: false)
     ]
     
-    var numQuestions: Int { return questions.count }
+    var numQuestions: Int { questions.count }
 
     func question(at index: Int) -> Question {
         return questions[index]
@@ -37,20 +29,18 @@ class HealthQuizViewModel {
         let q = questions[i]
         questions[i] = Question(id: q.id, text: q.text, checked: checked)
     }
+
+    func onTapSubmit() {
+        delegate?.onSubmit()
+    }
 }
 
 struct Question {
     let id: Int
     let text: String
-    var checked: Bool
+    let checked: Bool
 }
 
 protocol HealthQuizViewModelDelegate: class {
     func onSubmit()
-}
-
-extension HealthQuizViewModel {
-    func onTapSubmit() {
-        delegate?.onSubmit()
-    }
 }
