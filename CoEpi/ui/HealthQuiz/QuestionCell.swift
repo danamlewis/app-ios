@@ -1,5 +1,5 @@
 //
-//  SymptomCell.swift
+//  QuestionCell.swift
 //  CoEpi
 //
 //  Created by Johnson Hsieh on 3/26/20.
@@ -8,27 +8,36 @@
 
 import UIKit
 
-class SymptomCell: UITableViewCell {
+class QuestionCell: UITableViewCell {
+    public var onChecked: ((Question, Bool) -> ())?
 
-    let checkBox: CheckBox = .init()
+    private let checkBox: CheckBox = .init()
+    private var question: Question?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        textLabel?.text = "testing 55"
-//        accessoryType = .checkmark
-        checkBox.isChecked = false
+        checkBox.onChecked = { (checked: Bool) -> Void in
+            guard let q = self.question else { return }
+            self.onChecked?(q, checked)
+        }
         accessoryView = checkBox
-        
-//        imageView?.image = UIImage(named: "checkbox_checked")
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    public func setQuestion(question: Question) {
+        self.question = question
+        textLabel?.text = question.text
+        checkBox.isChecked = question.checked
+    }
 }
 
 class CheckBox: UIButton {
+    public var onChecked: ((Bool) -> ())?
+
     let rect = CGRect(x: 0, y: 0, width: 20, height: 20)
     // Images
     let checkedImage = UIImage(named: "checkbox_checked")
@@ -40,12 +49,11 @@ class CheckBox: UIButton {
         self.addTarget(self, action:#selector(buttonClicked(sender:)), for: UIControl.Event.touchUpInside)
         self.isChecked = false
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    // Bool property
+
     var isChecked: Bool = false {
         didSet {
             if isChecked == true {
@@ -59,6 +67,7 @@ class CheckBox: UIButton {
     @objc func buttonClicked(sender: UIButton) {
         if sender == self {
             isChecked = !isChecked
+            onChecked?(isChecked)
         }
     }
 }
