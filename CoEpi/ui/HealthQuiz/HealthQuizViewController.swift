@@ -15,7 +15,7 @@ class HealthQuizViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        symptomList.register(UITableViewCell.self, forCellReuseIdentifier: "SymptomCell")
+        symptomList.register(SymptomCell.self, forCellReuseIdentifier: "SymptomCell")
         symptomList.delegate = self
         symptomList.dataSource = self
     }
@@ -39,7 +39,7 @@ extension HealthQuizViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SymptomCell")!
-        cell.textLabel?.text = "Test"
+//        cell.textLabel?.text = "Test"
         return cell
     }
 
