@@ -39,7 +39,7 @@ extension HealthQuizViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SymptomCell")!
-//        cell.textLabel?.text = "Test"
+//        cell.textLabel?.text = "Test4"
         return cell
     }
 
